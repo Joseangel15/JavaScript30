@@ -105,43 +105,25 @@
   let lastChecked;
 
   function handleCheck(e) {
+    let inBetween = false;
+    console.log(e.checked);
+    if (e.shiftKey && this.checked){
+      checkboxes.forEach(checkbox => {
+        console.log(checkbox);
+        if(checkbox === this || checkbox === lastChecked){
+          inBetween = !inBetween;
+          console.log('Starting to check them inBetween');
+        }
 
-    if (e.shiftkey && this.checked){
-
+        if(inBetween) {
+          checkbox.checked = true;
+        }
+      })
     }
     lastChecked = this;
-    console.log(e.shiftkey === false);
   }
 
   checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
-
-  // let shifted = false;
-  // document.addEventListener('keydown', (e) => {
-  //   if(e.keyCode === 16){
-  //     shifted = true;
-  //     console.log(shifted)
-  //   }
-  // });
-  // document.addEventListener('keyup', (e) => {
-  //   if(e.keyCode === 16){
-  //     shifted = false;
-  //     console.log(shifted)
-  //   }
-  // });
-
-  // let items = document.querySelectorAll('div.item > input');
-
-  // document.addEventListener('click', (e) => {
-  //   console.log(e.target);
-  //   items = document.querySelectorAll('div.item > input');
-  //   let clickedItem = items.map
-  //   if(shifted === true){
-
-  //   }
-  // })
-  // console.log(items)
-
-
 </script>
 </body>
 </html>
