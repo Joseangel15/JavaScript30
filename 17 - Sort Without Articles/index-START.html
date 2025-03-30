@@ -46,7 +46,19 @@
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
+function strip(array){
+  return array.map(band => {
+    return band.replace(/^(a |the |an )/i, '').trim();
+  });
+}
 
+let cleanedBands = strip(bands).sort();
+
+cleanedBands.forEach(band => {
+  const li = document.createElement('li');
+  li.textContent = band;
+  document.getElementById('bands').appendChild(li);
+});
 </script>
 
 </body>
